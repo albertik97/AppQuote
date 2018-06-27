@@ -7,172 +7,28 @@
     <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
     <link rel="stylesheet" type="text/css" href="css/index.css">
     <title>AppQuote</title>
-    <link rel=”stylesheet” type="text/css" href="scripts/jQuery/jquery.mobile.theme-1.4.5.min.css" />
-
-    <script type="text/javascript" src="scripts/jquery-1.11.1.js"></script>
-    <script type="text/javascript" src="scripts/jQuery/jquery.mobile-1.4.5.min.js"></script>
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <script src="scripts/index.js"></script>
 </head>
-<body>
-    <div data-role=”page” id=”inicio”>
+<body onload="prepararCanvas()">
+    <section data-role="page" id="inicio">
 
-        <img src="../images/logo.png" />
-        <a href="#pantalla2" class="ui-btn">Empezar</a>
-    </div>
-
-    <div data-role=”page” id=”pantalla2″>
-        <h1> Pantalla 2 </h1>
-    </div>
-
-    <div id="main" data-role="page">
-        <div data-role="content">
-            Choose an option below
+        <div role="main" class="ui-content">
+            <img src="./images/logo.png" /><br />
+            <a href="#pantalla" data-role="button" data-transition="flow">Empezar</a>
         </div>
-        <div data-role="footer" data-position="fixed" data-theme="e">
-            <div data-role="navbar" data-iconpos="bottom">
-                <ul>
-                    <li><a id="take_photo" href="#" data-icon="grid">Take Photo</a></li>
-                    <li><a id="browse_photo" href="#" data-icon="star">Browse Photo</a></li>
-                    <li><a href="view.html" data-icon="gear">View</a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
-    <script type="text/javascript" src="cordova.js"></script>
-    <script type="text/javascript" src="scripts/platformOverrides.js"></script>
-    <script type="text/javascript" src="scripts/index.js"></script>
-    <script type="text/javascript">
-        // <![CDATA[
+       
+    </section>
 
-        $(function () {
+    <section id="pantalla" data-role="page">
+       
+            <canvas></canvas>
+        
 
-            $.ajaxSetup({
-                cache: false
-            });
-
-            $.support.cors = true;
-
-        });
-
-        $(document).bind('mobileinit', function () {
-
-            $.mobile.allowCrossDomainPages = true;
-
-        });
-
-        $('#main').live('pageinit', function (event) {
-
-            $('#browse_photo').click(function () {
-
-                navigator.camera.getPicture(uploadPhoto, function (message) {
-                    alert('get picture failed');
-                }, { quality: 50, destinationType: navigator.camera.DestinationType.FILE_URI, sourceType: navigator.camera.PictureSourceType.PHOTOLIBRARY });
-
-            });
-
-            $('#take_photo').click(function () {
-
-                navigator.device.capture.captureImage(captureSuccess, captureError, { limit: 1 });
-
-            });
-
-        });
-
-        $('#view').live('pageinit', function (event) {
-
-            $.get('http://www.domain.com/view.php', function (data) {
-
-                $('#photos').html(data.responseText);
-
-            });
-
-        });
-
-        function captureError(error) {
-
-            $('#loading').hide();
-
-            var msg = 'An error occurred during capture: ' + error.code;
-            navigator.notification.alert(msg, null, 'Uh oh!');
-        }
-
-        function captureSuccess(mediaFiles) {
-
-            var i, len;
-            for (i = 0, len = mediaFiles.length; i < len; i += 1) {
-                uploadFile(mediaFiles[i]);
-            }
-
-            $('#loading').show();
-
-        }
-
-        function uploadFile(mediaFile) {
-            var ft = new FileTransfer(),
-                path = mediaFile.fullPath,
-                name = mediaFile.name;
-
-            ft.upload(path, "http://www.domain.com/upload.php", function (result) {
-
-                //var msg = result.bytesSent + ' bytes sent';
-                //navigator.notification.alert(msg, null, 'Upload success');
-
-                sessionStorage.setItem('filename', result.response);
-                findLocation();
-
-                $('#loading').hide();
-
-            }, function (error) {
-
-                $('#loading').hide();
-
-                var msg = 'Error uploading file ' + path + ': ' + error.code;
-                navigator.notification.alert(msg, null, 'Error');
-
-            }, { fileName: name, fileKey: 'file' });
-        }
-
-        function uploadPhoto(imageURI) {
-
-            $('#loading').show();
-
-            var options = new FileUploadOptions();
-            options.fileKey = "file";
-            options.fileName = imageURI.substr(imageURI.lastIndexOf('/') + 1);
-            options.mimeType = "image/jpeg";
-
-            var params = new Object();
-            params.value1 = "test";
-            params.value2 = "param";
-
-            options.params = params;
-
-            var ft = new FileTransfer();
-            ft.upload(imageURI, "http://www.domain.com/upload.php", win, fail, options);
-
-        }
-
-        function win(result) {
-
-            $('#loading').hide();
-
-            //var msg = result.bytesSent + ' bytes sent';
-            //navigator.notification.alert(msg, null, 'Upload success');
-
-            sessionStorage.setItem('filename', result.response);
-
-            findLocation();
-
-        }
-
-        function fail(error) {
-
-            $('#loading').hide();
-
-            var msg = 'An error has occurred: Code = ' + error.code;
-            navigator.notification.alert(msg, null, 'Error');
-
-        }
-
-// ]]></script>
+    </section>
 </body>
+<script type="text/javascript" src="cordova.js"></script>
+<script type="text/javascript" src="scripts/platformOverrides.js"></script>
 </html>
