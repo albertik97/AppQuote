@@ -28,8 +28,9 @@
 function cameraTakePicture() {
    
     navigator.camera.getPicture(onSuccess, onFail, {
-        quality: 90,
-        destinationType: Camera.DestinationType.DATA_URL
+        quality: 100,
+        destinationType: Camera.DestinationType.DATA_URL,
+        cameraDirection: 1
     });
 
     function onSuccess(imageData) {
@@ -39,9 +40,16 @@ function cameraTakePicture() {
         img.src = "data: image / jpeg; base64," + imageData;
         img.onload = function () { 
             ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-            ctx.font = "bold 22px sans-serif";
-            cxt1.fillStyle = "white";
-            ctx.fillText("ARRIBA ESPAÑA", 50, 50);
+            ctx.font = "bold 40px sans-serif";
+            var gradient= ctx.createLinearGradient(0, 0, canvas.width, 0);
+            gradient.addColorStop("0", "red");
+            gradient.addColorStop("0.5", "yellow");
+            gradient.addColorStop("1.0", "red");
+            ctx.fillStyle = gradient;
+            ctx.textAlign = "center";
+            //let text = loadText();
+            ctx.fillText("ARRIBA ESPAÑA", canvas.width / 2, canvas.height * 0.9);
+            navigator.camera.cleanup(); //limpia archivos de la camara
          };
     }
 
@@ -49,4 +57,13 @@ function cameraTakePicture() {
         alert('Failed because: ' + message);
        
     }
+}
+
+
+//esta está por hacer y tal, se lee el json y devuelve una frase aleatoria
+function loadText() {
+    var frase = "";
+
+    return frase;
+
 }

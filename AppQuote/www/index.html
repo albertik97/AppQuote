@@ -17,16 +17,17 @@
 
         <div role="main" class="ui-content">
             <img src="./images/logo.png" /><br />
-            <a href="#pantalla" data-role="button" data-transition="flow">Empezar</a>
+            <a id="empezar" href="#pantalla" data-role="button" data-transition="flow">Start!</a>
         </div>
-       
+       <footer role="footer">
+           <p>Copyright@2018</p>
+       </footer>
     </section>
 
     <section id="pantalla" data-role="page">
-        <canvas id="cv" width="365" height="480"></canvas>
+        <canvas id="cv" width="360" height="480"></canvas>
         <button id="cameraTakePicture" onclick="cameraTakePicture();"></button>
-
-
+        <button>Guardar</button>
     </section>
 </body>
 <script type="text/javascript" src="cordova.js"></script>
