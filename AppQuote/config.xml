@@ -105,4 +105,5 @@
   </platform>
   <plugin name="cordova-plugin-camera" spec="~2.4.1" />
   <preference name="Orientation" value="portrait" />
+  <plugin name="cordova-plugin-dialogs" spec="~2.0.1" />
 </widget>

@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
     <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
     <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="scripts/index.js"></script>
 </head>
 <body onload="prepararCanvas()">
@@ -26,8 +27,9 @@
 
     <section id="pantalla" data-role="page">
         <canvas id="cv" width="360" height="480"></canvas>
-        <button id="cameraTakePicture" onclick="cameraTakePicture();"></button>
-        <button>Guardar</button>
+        <button id="cameraTakePicture" onclick="cameraTakePicture();">Foto!</button>
+        <button  id ="save" onclick="save();"><i class="fa fa-save"></i></button>
+        <button id="wa" onclick=""><i class="fa fa-whatsapp"></i></button>
     </section>
 </body>
 <script type="text/javascript" src="cordova.js"></script>
