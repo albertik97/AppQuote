@@ -53,7 +53,7 @@ function cameraTakePicture() {
             ctx.fillStyle = gradient;
             ctx.textAlign = "center";
             //let text = loadText();
-            ctx.fillText("ARRIBA ESPAÑA", canvas.width / 2, canvas.height * 0.9);
+            ctx.fillText(loadText(), canvas.width / 2, canvas.height * 0.9);
           
          };
     }
@@ -69,7 +69,16 @@ function cameraTakePicture() {
 function loadText() {
     var frase = "";
 
-    return frase;
+    $.getJSON("frases.json", function (data) {
+        var obj = JSON.parse(data);
+        var obj_str = JSON.stringify(obj, null, 2);
+
+        document.write(obj_str);
+
+        // ...
+    });
+
+    return "Arriba España";
 
 }
 
