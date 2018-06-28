@@ -1,4 +1,5 @@
-﻿function prepararCanvas() {
+﻿var img;
+function prepararCanvas() {
     let canvas = document.querySelector("#cv");
     let ctx = canvas.getContext('2d');
 
@@ -25,19 +26,23 @@
 
 }
 
+function alertDismissed() {
+    // do something
+}
+
 function cameraTakePicture() {
    
     navigator.camera.getPicture(onSuccess, onFail, {
         quality: 100,
-        destinationType: Camera.DestinationType.DATA_URL,
+        destinationType: Camera.DestinationType.DATA_URI,
         cameraDirection: 1
     });
 
     function onSuccess(imageData) {
         let canvas = document.querySelector("#cv");
         let ctx = canvas.getContext('2d');
-        let img = new Image();
-        img.src = "data: image / jpeg; base64," + imageData;
+        img = new Image();
+        img.src = imageData;
         img.onload = function () { 
             ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
             ctx.font = "bold 40px sans-serif";
@@ -49,7 +54,7 @@ function cameraTakePicture() {
             ctx.textAlign = "center";
             //let text = loadText();
             ctx.fillText("ARRIBA ESPAÑA", canvas.width / 2, canvas.height * 0.9);
-            navigator.camera.cleanup(); //limpia archivos de la camara
+          
          };
     }
 
@@ -66,4 +71,14 @@ function loadText() {
 
     return frase;
 
+}
+
+function save() {
+    navigator.notification.alert(
+        'Ruta: ',  // message
+        alertDismissed,         // callback
+        'Guardada',            // title
+        'Aceptar'                  // buttonName
+    );
+           // navigator.camera.cleanup(); //limpia archivos de la camara
 }
