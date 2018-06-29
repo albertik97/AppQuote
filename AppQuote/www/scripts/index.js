@@ -1,5 +1,9 @@
 ﻿var img;
+<<<<<<< HEAD
 var jsonAll;
+=======
+var data;
+>>>>>>> Alberto
 function prepararCanvas() {
     let canvas = document.querySelector("#cv");
     let ctx = canvas.getContext('2d');
@@ -39,13 +43,16 @@ function cameraTakePicture() {
 
     navigator.camera.getPicture(onSuccess, onFail, {
         quality: 100,
-        destinationType: Camera.DestinationType.DATA_URI,
+        sourceType: Camera.PictureSourceType.CAMERA,
+        encodingType: Camera.EncodingType.JPEG,
+        destinationType: Camera.DestinationType.FILE_URI,
         cameraDirection: 1
     });
 
     function onSuccess(imageData) {
         let canvas = document.querySelector("#cv");
         let ctx = canvas.getContext('2d');
+        data = imageData;
         img = new Image();
         img.src = imageData;
         img.onload = function () { 
@@ -58,8 +65,13 @@ function cameraTakePicture() {
             ctx.fillStyle = gradient;
             ctx.textAlign = "center";
             //let text = loadText();
+<<<<<<< HEAD
             ctx.fillText(loadText(), canvas.width / 2, canvas.height * 0.9);
           
+=======
+            ctx.fillText("ARRIBA ESPAÑA", canvas.width / 2, canvas.height * 0.9);
+            data = ctx.getImageData(0, 0, canvas.width, canvas.height).toDataURL("image/png");
+>>>>>>> Alberto
          };
     }
 
@@ -90,4 +102,16 @@ function save() {
         'Aceptar'                  // buttonName
     );
            // navigator.camera.cleanup(); //limpia archivos de la camara
+}
+
+function sendwa() {
+    let canvas = document.querySelector("#cv");
+    data = canvas.toDataURL("image/png");
+    window.plugins.socialsharing.shareViaWhatsApp('Compartido via AppQuote', data, null /* url */,
+        function () {
+            console.log('share ok')
+        },
+        function (errormsg) {
+            alert(errormsg)
+        });
 }
