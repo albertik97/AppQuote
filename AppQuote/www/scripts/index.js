@@ -70,15 +70,16 @@ function loadText() {
     var frase = "";
 
     $.getJSON("frases.json", function (data) {
-        var obj = JSON.parse(data);
-        var obj_str = JSON.stringify(obj, null, 2);
+        var jsonAll = JSON.parse(data);
 
-        document.write(obj_str);
+        JSONObject item = jsonAll.getJSONObject(2);
+
+        frase = item.getString("frase");
 
         // ...
     });
 
-    return "Arriba España";
+    return frase;
 
 }
 

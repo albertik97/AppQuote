@@ -15,18 +15,18 @@
       "fecha":  "1939"
     },
     {
-      "firstName": "Ruso",
-      "lastName": "Cyka Blyat",
+      "autor": "Ruso",
+      "frase": "Cyka Blyat",
       "fecha": "2018"
     },
     {
-      "firstName": "M. Rajoy",
-      "lastName": "Un plato es un plato, y un vaso es un vaso",
+      "autor": "M. Rajoy",
+      "frase": "Un plato es un plato, y un vaso es un vaso",
       "fecha": "2015"
     },
     {
-      "firstName": "M. Rajoy",
-      "lastName": "Tenemos que fabricar máquinas que nos permitan seguir fabricando máquinas porque lo que no va a hacer nunca la máquina es fabricar máquinas",
+      "autor": "M. Rajoy",
+      "frase": "Tenemos que fabricar máquinas que nos permitan seguir fabricando máquinas porque lo que no va a hacer nunca la máquina es fabricar máquinas",
       "fecha": "2016"
     }
   ]
