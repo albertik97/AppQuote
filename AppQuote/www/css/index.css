@@ -24,13 +24,15 @@ canvas {
 #cameraTakePicture {
     position: absolute;
     left: 150px;
-    width: 70px !important;
-    height: 70px !important;
+    width: 100px !important;
+    height: 50px !important;
     top: 495px;
-    border-radius: 60px;
+    border-radius: 30px;
     margin: 0 auto !important;
     text-align: center !important;
-    background: radial-gradient(#0e93eb,#2f5a75);
+    background: #d9bd34;
+    background-image: linear-gradient(to bottom, #d9bd34, #b89c2b);
+    text-shadow: none;
     border: solid 1px white;
 }
 
