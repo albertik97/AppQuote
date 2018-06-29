@@ -1,0 +1,33 @@
+{
+  "exclude": [
+    "**/bin",
+    "**/bower_components",
+    "**/jspm_packages",
+    "**/node_modules",
+    "**/obj",
+    "**/platforms"
+  ],
+
+  "frases": [
+    {
+      "autor": "Español de pura cepa",
+      "frase": "Arriba España",
+      "fecha":  "1939"
+    },
+    {
+      "autor": "Ruso",
+      "frase": "Cyka Blyat",
+      "fecha": "2018"
+    },
+    {
+      "autor": "M. Rajoy",
+      "frase": "Un plato es un plato, y un vaso es un vaso",
+      "fecha": "2015"
+    },
+    {
+      "autor": "M. Rajoy",
+      "frase": "Tenemos que fabricar máquinas que nos permitan seguir fabricando máquinas porque lo que no va a hacer nunca la máquina es fabricar máquinas",
+      "fecha": "2016"
+    }
+  ]
+}

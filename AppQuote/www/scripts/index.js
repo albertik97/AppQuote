@@ -1,9 +1,13 @@
 ﻿var img;
+var jsonAll;
 function prepararCanvas() {
     let canvas = document.querySelector("#cv");
     let ctx = canvas.getContext('2d');
 
-
+    $.getJSON("frases.json", function (data) {
+        jsonAll = data;
+        // ... Cargar el fichero json 1 sola vez
+    });
     /*
     var img = new Image();
     img.src = './images/cam.png';
@@ -31,7 +35,8 @@ function alertDismissed() {
 }
 
 function cameraTakePicture() {
-   
+    
+
     navigator.camera.getPicture(onSuccess, onFail, {
         quality: 100,
         destinationType: Camera.DestinationType.DATA_URI,
@@ -53,7 +58,7 @@ function cameraTakePicture() {
             ctx.fillStyle = gradient;
             ctx.textAlign = "center";
             //let text = loadText();
-            ctx.fillText("ARRIBA ESPAÑA", canvas.width / 2, canvas.height * 0.9);
+            ctx.fillText(loadText(), canvas.width / 2, canvas.height * 0.9);
           
          };
     }
@@ -69,7 +74,11 @@ function cameraTakePicture() {
 function loadText() {
     var frase = "";
 
-    return frase;
+    var n = Object.keys(jsonAll['frases']).length;
+
+    var indice = Math.floor(Math.random() * n);
+
+    return jsonAll['frases'][indice]['frase'];
 
 }
 
