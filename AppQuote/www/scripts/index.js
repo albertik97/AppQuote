@@ -1,9 +1,13 @@
 ﻿var img;
+var jsonAll;
 function prepararCanvas() {
     let canvas = document.querySelector("#cv");
     let ctx = canvas.getContext('2d');
 
-
+    $.getJSON("frases.json", function (data) {
+        jsonAll = data;
+        // ... Cargar el fichero json 1 sola vez
+    });
     /*
     var img = new Image();
     img.src = './images/cam.png';
@@ -31,7 +35,8 @@ function alertDismissed() {
 }
 
 function cameraTakePicture() {
-   
+    
+
     navigator.camera.getPicture(onSuccess, onFail, {
         quality: 100,
         destinationType: Camera.DestinationType.DATA_URI,
@@ -69,17 +74,11 @@ function cameraTakePicture() {
 function loadText() {
     var frase = "";
 
-    $.getJSON("frases.json", function (data) {
-        var jsonAll = JSON.parse(data);
+    var n = Object.keys(jsonAll['frases']).length;
 
-        JSONObject item = jsonAll.getJSONObject(2);
+    var indice = Math.floor(Math.random() * n);
 
-        frase = item.getString("frase");
-
-        // ...
-    });
-
-    return frase;
+    return jsonAll['frases'][indice]['frase'];
 
 }
 
