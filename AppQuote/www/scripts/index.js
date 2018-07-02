@@ -45,7 +45,7 @@ function cameraTakePicture() {
             //let text = loadText();
 
             ctx.fillText(loadText(), canvas.width / 2, canvas.height * 0.9);
-         };
+        };
     }
 
     function onFail(message) {
@@ -68,13 +68,20 @@ function loadText() {
 }
 
 function save() {
-    navigator.notification.alert(
-        'Ruta: ',  // message
-        alertDismissed,         // callback
-        'Guardada',            // title
-        'Aceptar'                  // buttonName
+    window.canvas2ImagePlugin.saveImageDataToLibrary(
+        function(msg){
+            console.log(msg);
+            var message = "Imagen guardada correctamente"
+            $(document).ready(function () {
+                $("#popupLogin").popup("open");
+            })
+            //$("#lnkDialog").click();
+        },
+        function(err){
+            console.log(err);
+        },
+        document.getElementById('cv')
     );
-           // navigator.camera.cleanup(); //limpia archivos de la camara
 }
 
 function sendwa() {
@@ -82,9 +89,20 @@ function sendwa() {
     data = canvas.toDataURL("image/png");
     window.plugins.socialsharing.shareViaWhatsApp('Compartido via AppQuote', data, null /* url */,
         function () {
-            console.log('share ok')
+            console.log('share ok');
         },
         function (errormsg) {
-            alert(errormsg)
+            alert(errormsg);
         });
 }
+
+//function saveImage() {
+//    let canvas = document.querySelector("#cv");
+//    data = canvas.toDataURL("image/png");
+
+//    var link = document.createElement("a");
+
+//    link.setAttribute("href", data);
+//    link.setAttribute("download", "unNombre");
+//    link.click();
+//}

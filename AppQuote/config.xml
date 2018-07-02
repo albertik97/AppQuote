@@ -108,4 +108,5 @@
   <plugin name="cordova-plugin-dialogs" spec="~2.0.1" />
   <plugin name="cordova-plugin-x-socialsharing" spec="~5.4.1" src="https://github.com/EddyVerbruggen/SocialSharing-PhoneGap-Plugin" />
   <plugin name="es6-promise-plugin" spec="~4.2.2" />
+  <plugin name="org.devgeeks.Canvas2ImagePlugin" spec="~0.6.0" src="https://github.com/devgeeks/Canvas2ImagePlugin.git" />
 </widget>
