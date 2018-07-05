@@ -71,10 +71,10 @@ function save() {
     window.canvas2ImagePlugin.saveImageDataToLibrary(
         function(msg){
             console.log(msg);
-            var message = "Imagen guardada correctamente"
+            var message = "Imagen guardada correctamente";
             $(document).ready(function () {
                 $("#popupLogin").popup("open");
-            })
+            });
             //$("#lnkDialog").click();
         },
         function(err){
@@ -96,13 +96,19 @@ function sendwa() {
         });
 }
 
-//function saveImage() {
-//    let canvas = document.querySelector("#cv");
-//    data = canvas.toDataURL("image/png");
-
-//    var link = document.createElement("a");
-
-//    link.setAttribute("href", data);
-//    link.setAttribute("download", "unNombre");
-//    link.click();
-//}
+function toInsta() {
+    let canvas = document.querySelector("#cv");
+    Instagram.isInstalled(function (err, installed) {
+        if (installed) {
+            Instagram.share(canvas.toDataURL("image/png"), function (err) {
+                if (err) {
+                    console.log("not shared");
+                } else {
+                    console.log("shared");
+                }
+            });
+        } else {
+            console.log("Instagram is not installed");
+        }
+    });
+}
