@@ -4,7 +4,7 @@
 }
 
 body {
-    background-color: #C62828 !important;
+    background-color: white !important;
     font-size: 12px;
     font-family: 'RobotoRegular', 'Droid Sans', 'Segoe UI', Segoe, 'San Francisco', 'Helvetica Neue', Helvetica, Arial, Geneva, sans-serif;
 }
@@ -13,7 +13,7 @@ body {
     margin: 0 auto !important;
     text-align: center !important;
     margin-top: 7em !important;
-    background: #C62828;
+    background: white;
 }
 canvas {
     background-color:black;
@@ -22,20 +22,19 @@ canvas {
 }
 
 #cameraTakePicture {
-    position: absolute;
-    left: 150px;
     width: 100px !important;
     height: 50px !important;
-    top: 495px;
     border-radius: 30px;
-    margin: 0 auto !important;
+    /*margin: 1em auto !important;*/
     text-align: center !important;
-    background: #d9bd34;
-    background-image: linear-gradient(to bottom, #d9bd34, #b89c2b);
+    background: white;
     text-shadow: none;
     border: solid 1px white;
 }
 
+#pop_up {
+    display:none;
+}
 #empezar {
     margin:0 auto;
     margin-top: 2em;
@@ -50,27 +49,40 @@ canvas {
     text-shadow:none;
 }
 #pantalla {
-    background: #C62828;
+    background: white;
+}
+
+h2 {
+    font-family: 'Gloria Hallelujah', cursive;
 }
 p {
     text-shadow: none;
-    color:white;
+    color:black;
     position:fixed;
     text-align:center !important;
     bottom:0;
     width:100%;
 }
+#botones {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
 #save {
-    width:50px !important;
-    float:right;
-    margin:1em;
-    display:inline-block;
+    width: 50px !important;
+    margin: 1em;
+    margin-left:3em;
 }
 #wa {
     width: 50px !important;
     float: left;
     display: inline-block;
+    margin:1em;
+}
+#share {
+    width: 50px !important;
     margin: 1em;
+    margin-right: 3em;
 }
 @media screen and (min-aspect-ratio: 1/1) and (min-width:400px) {
     .app {

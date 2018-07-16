@@ -1,11 +1,17 @@
 ﻿var img;
 var jsonAll;
 var data;
+var _width_;
+var _height_;
 
 function prepararCanvas() {
     let canvas = document.querySelector("#cv");
+    _width_ = window.innerWidth;
+    _height_ = window.innerHeight;
+    canvas.width = 320;
+    canvas.height = 420;
     let ctx = canvas.getContext('2d');
-
+    ctx.translate(0.5, 0.5);
     $.getJSON("data.json", function (data) {
         jsonAll = data;
         // ... Cargar el fichero json 1 sola vez
@@ -35,12 +41,9 @@ function cameraTakePicture() {
         img.src = imageData;
         img.onload = function () { 
             ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-            ctx.font = "bold 20px sans-serif";
-            var gradient= ctx.createLinearGradient(0, 0, canvas.width, 0);
-            gradient.addColorStop("0", "red");
-            gradient.addColorStop("0.5", "yellow");
-            gradient.addColorStop("1.0", "red");
-            ctx.fillStyle = gradient;
+            ctx.font = "bold 20px Comic Sans MS";
+
+            ctx.fillStyle = "white";
             ctx.textAlign = "center";
             //let text = loadText();
 
@@ -111,4 +114,8 @@ function toInsta() {
             console.log("Instagram is not installed");
         }
     });
+}
+
+function pop_up() {
+
 }

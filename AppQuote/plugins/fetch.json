@@ -48,13 +48,13 @@
         "is_top_level": false,
         "variables": {}
     },
-    "org.devgeeks.Canvas2ImagePlugin": {
+    "cordova-universal-clipboard": {
         "source": {
             "type": "git",
-            "url": "https://github.com/devgeeks/Canvas2ImagePlugin.git",
+            "url": "https://github.com/Visigo/CordovaClipboard.git",
             "subdir": "."
         },
-        "is_top_level": true,
+        "is_top_level": false,
         "variables": {}
     },
     "cordova-instagram-plugin": {
@@ -66,13 +66,13 @@
         "is_top_level": true,
         "variables": {}
     },
-    "cordova-universal-clipboard": {
+    "org.devgeeks.Canvas2ImagePlugin": {
         "source": {
             "type": "git",
-            "url": "https://github.com/Visigo/CordovaClipboard.git",
+            "url": "https://github.com/devgeeks/Canvas2ImagePlugin",
             "subdir": "."
         },
-        "is_top_level": false,
+        "is_top_level": true,
         "variables": {}
     }
 }
