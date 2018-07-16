@@ -110,4 +110,5 @@
   <plugin name="es6-promise-plugin" spec="~4.2.2" />
   <plugin name="org.devgeeks.Canvas2ImagePlugin" spec="~0.6.0" src="https://github.com/devgeeks/Canvas2ImagePlugin.git" />
   <plugin name="cordova-instagram-plugin" spec="~0.5.7" src="https://github.com/vstirbu/InstagramPlugin" />
+  <plugin name="cordova-universal-clipboard" spec="~0.1.0" />
 </widget>
